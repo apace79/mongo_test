@@ -1,0 +1,24 @@
+db = db.getSiblingDB('test')
+
+db.records.drop();
+
+db.records.insertMany([
+  {
+    key: "AkcKkrLs",
+    value: "qnfSodsuvVzc",
+    createdAt: ISODate("2015-03-08T07:29:46.532Z"),
+    counts: [1964, 1870, 1011],
+  },
+  {
+    key: "BqOIkrTF",
+    createdAt: ISODate("2015-06-03T01:01:52.237Z"),
+    counts: [1401, 1950, 1283],
+    value: "vHpHAzrmkwtt",
+  },
+  {
+    key: "rpIRzoMs",
+    value: "gSmvTJCnSgrL",
+    createdAt: ISODate("2016-04-26T10:58:48.978Z"),
+    counts: [383, 16, 1000],
+  },
+]);

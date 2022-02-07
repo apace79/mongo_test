@@ -1,0 +1,34 @@
+version: "3.7"
+
+services:
+  main:
+    image: mongo_test:local
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    ports:
+      - "${HOST_PORT:-8080}:8080"
+      - "5858:5858"
+    volumes:
+      - ./src:/usr/app/src
+      - ./dist:/usr/app/dist
+    networks:
+      - backend
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - ./data/init.mongo:/docker-entrypoint-initdb.d/init.js:ro
+    networks:
+      - backend
+
+networks:
+  backend:
+    name: backend
+    driver: bridge
